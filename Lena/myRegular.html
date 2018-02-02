@@ -1,0 +1,17 @@
+<html>
+	<body>
+		<script>
+
+			var string1 = 'Тип строка, в которой должны быть знаки препинания?!.';
+			var put = /[?!,.]/ig;
+			console.log(string1.search(put), 'имеются знаки препинания');
+
+			var string2 = 'Строка, в которой точно есть гласные буквы';
+			console.log(string2.replace(/[ауеыоэяию]/ig, '*'));
+
+			function replace(s){return '(' + s + ')'};
+			console.log(string1.replace(/[А-я]+/g, replace));
+
+		</script>
+	</body>
+</html>
