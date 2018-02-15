@@ -1,0 +1,77 @@
+<html>
+<head>
+	<title>a</title>
+</head>
+<body>
+	
+	<button onclick="loadCars()"> load cars </button>
+
+	<div class="js-output"></div>
+
+
+<script>
+	
+var testUrl = 'http://www.mocky.io/v2/5a85ba3f3100005d002530db';
+
+function loadCars() {
+	// загрузка данных с сервера
+	fetch(testUrl)
+	  .then(function(response) {
+	    return response.json();
+	   })
+	  .then(function(data) {
+	    afterAjax(data);
+	    console.log("1");
+	  });
+};
+
+var cars = [];
+
+function afterAjax(data){
+	if (data.length) {
+		data.forEach(function(el){
+			cars.push(new Car(el.name, el.marka, el.date));
+		});
+	};
+
+	showResult(cars);
+};
+
+class Car {
+	constructor (name, marka, date) {
+		this.name = name;
+		this.marka = marka;
+		this.date = date;
+	}
+	go () {
+		console.log('vshy vshy, ', this.name);
+	};
+};
+
+function showResult(d) {
+	var output = document.querySelector('.js-output');
+
+	var str = '';
+
+	d.forEach(function(el){
+		str += '<div class="doggy">' + el.name + '</div>';
+	});
+
+	output.innerHTML = str;
+
+};
+
+
+</script>
+<style type="text/css">
+	.doggy {
+		border: 2px dashed red;
+	}
+
+</style>
+
+
+</body>
+	
+	
+</html>
