@@ -1,19 +1,19 @@
 <html>
 <head>
-	<title>a</title>
+	<title></title>
 </head>
 <body>
 	
-	<button onclick="loadCars()"> load cars </button>
+	<button onclick="loadNews()"> load news </button>
 
 	<div class="js-output"></div>
 
 
 <script>
 	
-var testUrl = 'http://www.mocky.io/v2/5a85ba3f3100005d002530db';
+var testUrl = 'http://www.mocky.io/v2/5a8adbae32000063001abc91';
 
-function loadCars() {
+function loadNews() {
 	// загрузка данных с сервера
 	fetch(testUrl)
 	  .then(function(response) {
@@ -24,16 +24,16 @@ function loadCars() {
 	  });
 };
 
-
+var news = [];
 
 function afterAjax(data){
 	if (data.length) {
 		data.forEach(function(el){
-			cars.push(new Car(el.name, el.marka, el.date));
+			news.push();
 		});
 	};
 
-	showResult(cars);
+	showResult(news);
 };
 
 
@@ -53,7 +53,12 @@ function showResult(d) {
 
 
 </script>
+<style type="text/css">
+	.doggy {
+		border: 2px dashed red;
+	}
 
+</style>
 
 
 </body>
