@@ -4,7 +4,7 @@
 </head>
 <body>
 	
-	<button onclick="loadNews()"> load news </button>
+	<button onclick="loadNews()"> </button>
 
 	<div class="js-output"></div>
 
@@ -18,23 +18,12 @@ function loadNews() {
 	fetch(testUrl)
 	  .then(function(response) {
 	    return response.json();
-	   })
-	  .then(function(data) {
-	    afterAjax(data);
-	  });
+	   });
 };
 
 var news = [];
 
-function afterAjax(data){
-	if (data.length) {
-		data.forEach(function(el){
-			news.push();
-		});
-	};
 
-	showResult(news);
-};
 
 
 
