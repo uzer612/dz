@@ -1,53 +1,79 @@
 <html>
-<head>
-	<title></title>
-</head>
+
+
 <body>
 	
-	<button onclick="loadNews()"> </button>
 
-	<div class="js-output"></div>
 
 
 <script>
-	
-var testUrl = 'http://www.mocky.io/v2/5a8adbae32000063001abc91';
 
-function loadNews() {
-	// загрузка данных с сервера
-	fetch(testUrl)
-	  .then(function(response) {
-	    return response.json();
-	   });
+function password(){
+    x = [];
+    y = 0;
+    while(y < 5){
+         x.push(Math.floor((Math.random() * 10) + 1));
+         y++;
+    }
+}
+
+
+function gennewarr(w){
+    var arr = [];
+    x = 0;
+    while(x < w){
+        arr.push(t);
+        x++;
+        t--;
+    };
+    return arr;
 };
 
-var news = [];
 
-
-
-
-
-function showResult(d) {
-	var output = document.querySelector('.js-output');
-
-	var str = '';
-
-	d.forEach(function(el){
-		str += '<div class="doggy">' + el.name + '</div>';
-	});
-
-	output.innerHTML = str;
-
+function genArr(h, w){
+    t = w ;
+    array = [];
+    y = 0;
+    while(y < h){
+        array.push(gennewarr(w));
+        y++;
+    }
+    return array;
 };
 
+genArr(6, 7);
+
+console.log(array);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let numbers = [2, 3, 1];
+
+
+let max = Math.max(...numbers);
+
+console.log( max );
 
 </script>
-<style type="text/css">
-	.doggy {
-		border: 2px dashed red;
-	}
 
-</style>
 
 
 </body>
