@@ -2,81 +2,74 @@
 
 
 <body>
-	
 
+<h1>Создать класс объектов, у которых есть методы plusX, minusX.</h1>
+
+<p>При этом Х задается при создании экземпляра класса (объекта).
+Например, x = new Preobrazovatel(2, 0)
+Такой объект будет прибавлять или отнимать ДВА.</p>
+
+<p>Методы plusX и minusX принимают массив массивов и возвращают копию, в которой массивам либо добавили либо убрали Х элементов.</p>
+
+<h1>Например:</h1>
+<p>x.plusX([  [1, 2, 3],  [1, 2, 3] ]) // вернет [  [1, 2, 3, 0, 0],  [1, 2, 3, 0, 0] ]</p>
+
+
+<h1>Для упрощения задачи.</h1>
+
+<p>1) Попробуйте создать класс, который создает объект с заданными свойствами</p>
+<p>2) Попробуйте написать отдельные функции plus5, minus5, которые прибавляют или убирают по 5 элементов массива. Они должны возвращать новый массив</p>
 
 
 <script>
 
-function password(){
-    x = [];
-    y = 0;
-    while(y < 5){
-         x.push(Math.floor((Math.random() * 10) + 1));
-         y++;
-    }
-}
+
+    var array = [1, 23, 4, 5, 7, 8, 4, 34, 656, 345, 34];
 
 
-function gennewarr(w){
-    var arr = [];
-    x = 0;
-    while(x < w){
-        arr.push(t);
-        x++;
-        t--;
+    class User {
+      constructor(x, y) {
+        this.x = x;
+        this.whatAppend = y;
+      };
+      plusX(arr) {
+
+      };
+      minusX(arr) {
+
+      };
     };
-    return arr;
-};
+ 
+ 
 
+    function plus5(array){
+        var a = 0;
+        var ery = array.slice();
+        while(a < 5){
+            ery.push(7);
+            a++;
+        };
+        return ery;
+    };
 
-function genArr(h, w){
-    t = w * h - 1 ;
-    array = [];
-    y = 0;
-    while(y < h){
-        array.push(gennewarr(w));
-        y++;
-    }
-    return array;
-};
-
-genArr(6, 7);
-
-console.log(array);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-let numbers = [2, 3, 1];
-
-
-let max = Math.max(...numbers);
-
-console.log( max );
+    function minus5(array){
+        var a = 0;
+        var er = array.slice();
+        while(a < 5){
+            er.pop();
+            a++;
+        };
+        return er;
+    };
+    var testar2 = [8, 7, 4, 5, 7, 8, 4];
+    var er = minus5(testar2);
+    console.log(er, testar2)
 
 </script>
 
 
 
 </body>
-	
-	
+    
+    
 </html>

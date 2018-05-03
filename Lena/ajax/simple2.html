@@ -1,0 +1,30 @@
+<html>
+<head>
+	<title>ajax simple 2</title>
+</head>
+<body>
+	
+<script>
+	
+var testUrl = 'http://www.mocky.io/v2/5aeb513830000029005754b5';
+
+fetch(testUrl)
+  .then(function(response) {
+    return response.json();
+   })
+  .then(function(data) {
+    afterAjax(data);
+  });
+
+function afterAjax(data) {
+    console.log(data.name);
+};
+
+
+</script>
+
+
+</body>
+
+
+</html>

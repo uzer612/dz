@@ -1,0 +1,76 @@
+<html>
+<head>
+	<title>ajax - show</title>
+</head>
+<body>
+	
+	<button onclick="loadDogs()"> load dogs </button>
+
+	<div class="js-output"></div>
+
+
+<script>
+	
+var testUrl = 'http://www.mocky.io/v2/5a734d003100002900a1d5cd';
+
+function loadDogs() {
+	// загрузка данных с сервера
+	fetch(testUrl)
+	  .then(function(response) {
+	    return response.json();
+	   })
+	  .then(function(data) {
+	    afterAjax(data);
+	  });
+};
+
+var dogs = [];
+
+function afterAjax(data){
+	if (data.length) {
+		data.forEach(function(el){
+			dogs.push(new Dog(el.name, el.weight, el.date));
+		});
+	};
+	//console.log('dogs', dogs);
+	showResult(dogs);
+};
+
+class Dog {
+	constructor (name, weight, date) {
+		this.name = name;
+		this.weight = weight;
+		this.date = date;
+	}
+	say () {
+		console.log('gau gau, ', this.name);
+	};
+};
+
+function showResult(d) {
+	var output = document.querySelector('.js-output');
+
+	var str = '';
+
+	d.forEach(function(el){
+		str += '<div class="doggy">' + el.name + '</div>';
+	});
+
+	output.innerHTML = str;
+
+};
+
+
+</script>
+<style type="text/css">
+	.doggy {
+		border: 2px dashed red;
+	}
+
+</style>
+
+
+</body>
+	
+	
+</html>

@@ -1,0 +1,62 @@
+<html>
+
+
+<body>
+	
+
+
+
+<script>
+
+
+    var dogs = [
+        {
+            name: 'Tuzik',
+            bark: function(){
+                console.log("pay pay");
+            },
+            poroda: "ovcharka"
+        },
+        {
+            name: 'Grelca',
+            bark: function(){
+                console.log("yaf yaf");
+            },
+            poroda: "picenes"
+        },
+        {
+            name: 'Porvoo',
+            bark: function(){
+                console.log("af pay");
+            },
+            poroda: "tacsa"
+        },
+    ];
+    var addProperties = function(objArr) {
+        var arr = [];
+        // dog: true
+        objArr.forEach(function(x) {
+            var clone = {}; // новый пустой объект
+            // скопируем в него все свойства user
+            for (var key in x) {
+              clone[key] = x[key];
+            }
+            
+            clone.dog = true;
+            arr.push(clone);
+        });
+        return arr ;
+    }
+
+    var dogs1 = addProperties(dogs);
+
+
+
+</script>
+
+
+
+</body>
+	
+	
+</html>

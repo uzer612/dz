@@ -1,0 +1,61 @@
+<html>
+<head>
+	<title>ajax</title>
+</head>
+<body>
+	
+<script>
+	
+var testUrl = 'http://www.mocky.io/v2/5a734d003100002900a1d5cd';
+
+fetch(testUrl)
+  .then(function(response) {
+    return response.json();
+   })
+  .then(function(data) {
+    afterAjax(data);
+  });
+
+var dogs = [];
+
+function afterAjax(data){
+	if (data.length) {
+		data.forEach(function(el){
+			dogs.push(new Dog(el.name, el.weight, el.date));
+		});
+	};
+	console.log('dogs', dogs);
+};
+
+class Dog {
+	constructor (name, weight, date) {
+		this.name = name;
+		this.weight = weight;
+		this.date = date;
+	}
+	say () {
+		console.log('gau gau, ', this.name);
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+</body>
+	
+	
+	
+	
+</html>
