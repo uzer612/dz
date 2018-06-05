@@ -1,0 +1,48 @@
+<html>
+<head>
+    <title>My homework</title>
+</head>
+<body>
+
+<button onclick="afterAjax1()">О компании</button>
+<button onclick="afterAjax2()">услуги</button>
+<button onclick="afterAjax3()">заказать</button>
+<button onclick="afterAjax4()">контакты</button>
+
+
+<script>
+
+var testUrl = 'http://www.mocky.io/v2/5b16e6b33100009b006f40d5';
+
+function ajax() {
+
+    fetch(testUrl)
+      .then(function(response) {
+        return response.json();
+       })
+      .then(function(data) {
+        afterAjax(data);
+      });
+    
+}
+
+
+function afterAjax1(data) {
+   console.log(data[0].company);
+};
+
+function afterAjax2(data) {
+   console.log(data[1].uslygi);
+};
+
+function afterAjax3(data) {
+   console.log(data[2].sakas);
+};
+
+function afterAjax4(data) {
+   console.log(data[3].kontakt);
+};
+
+</script>
+</body>
+</html>

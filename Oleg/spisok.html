@@ -1,0 +1,30 @@
+<html>
+<head>
+  <title>ajax simszfgzdfsh
+<body>
+  
+<script>
+  
+var testUrl = 'http://www.mocky.io/v2/5aeb4add3000006500575499';
+
+fetch(testUrl)
+  .then(function(response) {
+    return response.json();
+   })
+  .then(function(data) {
+    afterAjax(data);
+  });
+
+function afterAjax(data) {
+  alert('Data:' + data.text);
+    console.log(data);
+};
+
+
+</script>
+
+
+</body>
+
+
+</html>
