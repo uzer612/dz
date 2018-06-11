@@ -1,0 +1,51 @@
+﻿<html>
+<head>
+    <meta name="http-equiv" content="Content-type: text/html;charset=utf-8">
+    <title>My homework</title>
+</head>
+<body>
+
+<button onclick="load(testUrl3, afterAjax)">Товары</button>
+
+
+<div id="tovar"></div>
+
+
+<script>
+
+    var testUrl3 = 'http://www.mocky.io/v2/5b197b90300000ec35da175d';
+
+    var tovarDiv = document.getElementById('tovar');
+
+
+    function load(x, func) {
+
+      tovarDiv.innerHTML = '';
+
+      fetch(x)
+        .then(function(response) {
+          return response.json();
+         })
+        .then(function(data) {
+          func(data);
+        });
+    };
+
+
+    function afterAjax(data) {
+       console.log(data);
+       var i = 0;
+       while (i < data.length) {
+        tovarDiv.innerHTML += '<br>';
+        tovarDiv.innerHTML += '<img src=' + data[i].pic + '>';
+        tovarDiv.innerHTML += data[i].text;
+
+        i++
+
+       };
+    };
+
+
+</script>
+</body>
+</html>

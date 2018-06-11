@@ -1,76 +1,60 @@
 <html>
 <head>
-	<title>a</title>
+    <meta name="http-equiv" content="Content-type: text/html;charset=utf-8">
+    <title>My homework</title>
 </head>
 <body>
-	
-	<button onclick="loadCars()"> load cars </button>
 
-	<div class="js-output"></div>
+<button onclick="load(testUrl1, afterAjax)">Об игре</button>
+
+<button onclick="load(testUrl2, afterAjax1)">Игроки</button>
+
+<button onclick="load(testUrl3, afterAjax1)">Мой профиль</button>
+
+<div id="text"></div>
+<div id="tovar"></div>
 
 
 <script>
-	
-var testUrl = 'http://www.mocky.io/v2/5a85ba3f3100005d002530db';
+var testUrl1 = 'http://www.mocky.io/v2/5b1e871f3100004f2d3ff90f';
+var testUrl2 = 'http://www.mocky.io/v2/5b1e86ae3100004f2d3ff909';
+var testUrl3 = 'http://www.mocky.io/v2/5b1e876e3100008a233ff912';
+var textDiv = document.getElementById('text');
+var tovarDiv = document.getElementById('tovar');
 
-function loadCars() {
-	// загрузка данных с сервера
-	fetch(testUrl)
-	  .then(function(response) {
-	    return response.json();
-	   })
-	  .then(function(data) {
-	    afterAjax(data);
-	  });
+
+
+function load(x, func) {
+  fetch(x)
+    .then(function(response) {
+      return response.json();
+     })
+    .then(function(data) {
+      func(data);
+    });
 };
 
-var cars = [];
 
-function afterAjax(data){
-	if (data.length) {
-		data.forEach(function(el){
-			cars.push(new Car(el.name, el.marka, el.date));
-		});
-	};
-
-	showResult(cars);
+function afterAjax(data) {
+   console.log(data[0].pic);
+   textDiv.innerHTML = data[0].pic;
 };
 
-class Car {
-	constructor (name, marka, date) {
-		this.name = name;
-		this.marka = marka;
-		this.date = date;
-	}
-	go () {
-		console.log('vshy vshy, ', this.name);
-	};
-};
 
-function showResult(d) {
-	var output = document.querySelector('.js-output');
+  function afterAjax1(data) {
+       console.log(data);
+       var i = 0;
+       while (i < data.length) {
+        tovarDiv.innerHTML += '<br>';
+        tovarDiv.innerHTML += '<img src=' + data[i].pic + '>';
+        tovarDiv.innerHTML += data[i].name;
 
-	var str = '';
+        i++
 
-	d.forEach(function(el){
-		str += '<div class="doggy">' + el.name + '</div>';
-	});
-
-	output.innerHTML = str;
-
-};
+       };
+    };
 
 
 </script>
-<style type="text/css">
-	.doggy {
-		border: 2px dashed red;
-	}
-
-</style>
-
-
 </body>
-	
-	
 </html>
