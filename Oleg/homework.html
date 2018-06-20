@@ -9,7 +9,7 @@
 
 <button onclick="load(testUrl2, afterAjax1)">Игроки</button>
 
-<button onclick="load(testUrl3, afterAjax1)">Мой профиль</button>
+<button onclick="load(testUrl3, afterAjax2)">Мой профиль</button>
 
 <div id="text"></div>
 <div id="tovar"></div>
@@ -18,7 +18,7 @@
 <script>
 var testUrl1 = 'http://www.mocky.io/v2/5b1e871f3100004f2d3ff90f';
 var testUrl2 = 'http://www.mocky.io/v2/5b1e86ae3100004f2d3ff909';
-var testUrl3 = 'http://www.mocky.io/v2/5b1e876e3100008a233ff912';
+var testUrl3 = 'http://www.mocky.io/v2/5b2a7d9d3000006a009cd3e3';
 var textDiv = document.getElementById('text');
 var tovarDiv = document.getElementById('tovar');
 
@@ -53,6 +53,19 @@ function afterAjax(data) {
 
        };
     };
+
+
+
+  function afterAjax2(data) {
+       console.log(data);
+     
+        tovarDiv.innerHTML += '<br>';
+        tovarDiv.innerHTML += '<img src=' + data.pic + '>';
+        tovarDiv.innerHTML += data.name;
+
+       };
+    };
+
 
 
 </script>
