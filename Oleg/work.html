@@ -9,12 +9,15 @@
 
 <div id="city"></div>
 <div id="koord"></div>
+<div id="koor"></div>
 <div id="temp"></div>
 <div id="skor"></div>
 
 
 <script>
+
 var testUrl1 = 'http://openweathermap.org/data/2.5/weather?q=Moscow&appid=b6907d289e10d714a6e88b30761fae22';
+
 var cityDiv = document.getElementById('city');
 var koordDiv = document.getElementById('koord');
 var koorDiv = document.getElementById('koor');
@@ -34,23 +37,21 @@ function load(x, func) {
 
 
 function afterAjax(data) {
-   console.log(data.name);
+   console.log("Город:" , data.name);
    cityDiv.innerHTML = data.name;
 
-   console.log(data.coord.lon);
-   koordDiv.innerHTML = data.coord;
+   console.log("Долгота:" , data.coord.lon);
+   koordDiv.innerHTML = data.coord.lon;
 
-    console.log(data.coord.lan);
-   koorDiv.innerHTML = data.coord;
+    console.log("Широта:" , data.coor.lan);
+   koorDiv.innerHTML = data.coor.lan;
 
-   console.log(data.temp);
-   tempDiv.innerHTML = data.temp;
+   console.log("Температура: , "data.main.temp);
+   tempDiv.innerHTML = data.main.temp;
 
-   console.log(data.wind);
-   skorDiv.innerHTML = data.wind;
+   console.log("Скорость ветра:" , data.wind.speed);
+   skorDiv.innerHTML = data.wind.speed;
 };
-
-
 
 load();
 
