@@ -1,0 +1,59 @@
+﻿<html>
+<head>
+    <meta name="http-equiv" content="Content-type: text/html;charset=utf-8">
+    <title>My homework</title>
+</head>
+<body>
+
+
+
+<div id="city"></div>
+<div id="koord"></div>
+<div id="temp"></div>
+<div id="skor"></div>
+
+
+<script>
+var testUrl1 = 'http://openweathermap.org/data/2.5/weather?q=Moscow&appid=b6907d289e10d714a6e88b30761fae22';
+var cityDiv = document.getElementById('city');
+var koordDiv = document.getElementById('koord');
+var koorDiv = document.getElementById('koor');
+var tempDiv = document.getElementById('temp');
+var skorDiv = document.getElementById('skor');
+
+
+function load(x, func) {
+  fetch(x)
+    .then(function(response) {
+      return response.json();
+     })
+    .then(function(data) {
+      func(data);
+    });
+};
+
+
+function afterAjax(data) {
+   console.log(data.name);
+   cityDiv.innerHTML = data.name;
+
+   console.log(data.coord.lon);
+   koordDiv.innerHTML = data.coord;
+
+    console.log(data.coord.lan);
+   koorDiv.innerHTML = data.coord;
+
+   console.log(data.temp);
+   tempDiv.innerHTML = data.temp;
+
+   console.log(data.wind);
+   skorDiv.innerHTML = data.wind;
+};
+
+
+
+load();
+
+</script>
+</body>
+</html>

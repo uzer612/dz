@@ -1,16 +1,17 @@
-<html>
+﻿<html>
 <head>
     <meta name="http-equiv" content="Content-type: text/html;charset=utf-8">
     <title>My homework</title>
 </head>
 <body>
 
+
 <button onclick="load(testUrl1, afterAjax)">Об игре</button>
 
 <button onclick="load(testUrl2, afterAjax1)">Игроки</button>
 
 <button onclick="load(testUrl3, afterAjax2)">Мой профиль</button>
-
+<div id="load" style = "display : none">Загрузка</div>
 <div id="text"></div>
 <div id="tovar"></div>
 
@@ -21,10 +22,12 @@ var testUrl2 = 'http://www.mocky.io/v2/5b1e86ae3100004f2d3ff909';
 var testUrl3 = 'http://www.mocky.io/v2/5b2a7d9d3000006a009cd3e3';
 var textDiv = document.getElementById('text');
 var tovarDiv = document.getElementById('tovar');
-
+var loadDiv = document.getElementById('load');
 
 
 function load(x, func) {
+
+ 	loadDiv.style.display = "block";
   fetch(x)
     .then(function(response) {
       return response.json();
@@ -36,6 +39,9 @@ function load(x, func) {
 
 
 function afterAjax(data) {
+	textDiv.innerHTML = "";
+   tovarDiv.innerHTML = "";
+   	loadDiv.style.display = "none";
    console.log(data[0].pic);
    textDiv.innerHTML = data[0].pic;
 };
@@ -44,6 +50,9 @@ function afterAjax(data) {
   function afterAjax1(data) {
        console.log(data);
        var i = 0;
+     textDiv.innerHTML = "";
+   tovarDiv.innerHTML = "";
+      	loadDiv.style.display = "none";
        while (i < data.length) {
         tovarDiv.innerHTML += '<br>';
         tovarDiv.innerHTML += '<img src=' + data[i].pic + '>';
@@ -58,13 +67,15 @@ function afterAjax(data) {
 
   function afterAjax2(data) {
        console.log(data);
-     
+   textDiv.innerHTML = "";
+   tovarDiv.innerHTML = "";
+      	loadDiv.style.display = "none";
         tovarDiv.innerHTML += '<br>';
         tovarDiv.innerHTML += '<img src=' + data.pic + '>';
         tovarDiv.innerHTML += data.name;
 
        };
-    };
+
 
 
 
