@@ -40,14 +40,14 @@ function afterAjax(data) {
    console.log("Город:" , data.name);
    cityDiv.innerHTML = data.name;
 
-   console.log("Долгота:" , data.coord.lon);
+   console.log("Долгота:" + data.coord.lon);
    koordDiv.innerHTML = data.coord.lon;
 
-    console.log("Широта:" , data.coor.lan);
-   koorDiv.innerHTML = data.coor.lan;
+   console.log("Широта:" , data.coor.lan);
+   koorDiv.innerHTML =  data.coor.lan;
 
-   console.log("Температура: , "data.main.temp);
-   tempDiv.innerHTML = data.main.temp;
+   console.log("Температура:" , data.main.temp);
+   tempDiv.innerHTML =  data.main.temp;
 
    console.log("Скорость ветра:" , data.wind.speed);
    skorDiv.innerHTML = data.wind.speed;
