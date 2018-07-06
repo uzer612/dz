@@ -1,7 +1,7 @@
 ﻿<html>
 <head>
     <meta name="http-equiv" content="Content-type: text/html;charset=utf-8">
-    <title>My homework</title>
+    <title>work</title>
 </head>
 <body>
 
@@ -15,6 +15,7 @@
 
 
 <script>
+
 
 var testUrl1 = 'http://openweathermap.org/data/2.5/weather?q=Moscow&appid=b6907d289e10d714a6e88b30761fae22';
 
@@ -38,22 +39,22 @@ function load(x, func) {
 
 function afterAjax(data) {
    console.log("Город:" , data.name);
-   cityDiv.innerHTML = data.name;
+   cityDiv.innerHTML = "Город: " + data.name;
 
-   console.log("Долгота:" + data.coord.lon);
-   koordDiv.innerHTML = data.coord.lon;
+   console.log("Долгота:" , data.coord.lon);
+   koordDiv.innerHTML = "Долгота: " + data.coord.lon;
 
-   console.log("Широта:" , data.coor.lan);
-   koorDiv.innerHTML =  data.coor.lan;
+   console.log("Широта:" , data.coord.lat);
+   koorDiv.innerHTML =  "Широта: " + data.coord.lat;
 
    console.log("Температура:" , data.main.temp);
-   tempDiv.innerHTML =  data.main.temp;
+   tempDiv.innerHTML = "Температура: " + data.main.temp;
 
    console.log("Скорость ветра:" , data.wind.speed);
-   skorDiv.innerHTML = data.wind.speed;
+   skorDiv.innerHTML = "Скорость ветра: " + data.wind.speed + " М/с";
 };
 
-load();
+load(testUrl1, afterAjax);
 
 </script>
 </body>
