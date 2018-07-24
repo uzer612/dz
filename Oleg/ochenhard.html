@@ -1,0 +1,236 @@
+﻿<html>
+<head>
+    <meta name="http-equiv" content="Content-type: text/html;charset=utf-8">
+    <title>work</title>
+</head>
+<body>
+
+
+<button class="butto" onclick="load(testUrl1, afterAjax)">О компании</button>
+<button class="button" onclick="load(testUrl2, after)">Услуги</button>
+
+
+
+<div class="help" id="help"></div>
+<div class="helpa" id="helpa"></div>
+<div class="helps" id="helps"></div>
+<div class="helpd" id="helpd"></div>
+<div class="helpf" id="helpf"></div>
+
+
+<div onclick="perem1()" class="kodiv" id="id1"></div>
+<div onclick="perem2()" class="kodiv" id="id2"></div>
+<div onclick="perem3()" class="kodiv" id="id3"></div>
+<div onclick="perem4()" class="kodiv" id="id4"></div>
+<div onclick="perem5()" class="kodiv" id="id5"></div>
+
+
+
+
+
+
+<div class="like" id="izb">Избранное</div>
+
+<div class="ysl" id="ysl"></div>
+<div class="kodiv"  id="kod"></div>
+
+<script>
+
+
+var testUrl1 = 'http://www.mocky.io/v2/5b4fda843600003e0ddd0c33';
+
+var testUrl2 = 'http://www.mocky.io/v2/5b558d98320000b804827e0e';
+
+var yslDiv = document.getElementById('ysl');
+var kodDiv = document.getElementById('kod');
+
+var izbDiv = document.getElementById('izb');
+
+
+var hDiv = document.getElementById('help');
+var aDiv = document.getElementById('helpa');
+var sDiv = document.getElementById('helps');
+var dDiv = document.getElementById('helpd');
+var fDiv = document.getElementById('helpf');
+
+var qDiv = document.getElementById('id1');
+var wDiv = document.getElementById('id2');
+var eDiv = document.getElementById('id3');
+var rDiv = document.getElementById('id4');
+var yDiv = document.getElementById('id5');
+
+
+
+function load(x, func) {
+  fetch(x)
+    .then(function(response) {
+      return response.json();
+     })
+    .then(function(data) {
+      func(data);
+    });
+};
+
+
+
+
+function afterAjax(data) {
+    kodDiv.innerHTML = "";
+    yslDiv.innerHTML = "";
+    izbDiv.style.display = "none";
+    qDiv.style.display = "none";
+    wDiv.style.display = "none";
+    eDiv.style.display = "none";
+    rDiv.style.display = "none";
+    yDiv.style.display = "none";
+
+    hDiv.style.display = "none";
+    aDiv.style.display = "none";
+    sDiv.style.display = "none";
+    dDiv.style.display = "none";
+    fDiv.style.display = "none";
+    x = 0;
+    while (x < data.length) {
+        console.log(data[x].text);
+        yslDiv.innerHTML = yslDiv.innerHTML + (data[x].text);
+        x++;
+    };
+};
+
+
+function after(data) {
+    y = 0;
+    izbDiv.style.display = "block";
+    qDiv.style.display = "block";
+    wDiv.style.display = "block";
+    eDiv.style.display = "block";
+    rDiv.style.display = "block";
+    yDiv.style.display = "block";
+
+    hDiv.style.display = "block";
+    aDiv.style.display = "block";
+    sDiv.style.display = "block";
+    dDiv.style.display = "block";
+    fDiv.style.display = "block";
+
+    kodDiv.innerHTML = "";
+    yslDiv.innerHTML = "";
+    qDiv.innerHTML = (data[0].text) + "<br>";
+    wDiv.innerHTML = (data[1].text) + "<br>";
+    eDiv.innerHTML = (data[2].text) + "<br>";
+    rDiv.innerHTML = (data[3].text) + "<br>";
+    yDiv.innerHTML = (data[4].text) + "<br>";
+    y++;
+};
+
+
+
+
+
+
+function perem() {
+   izbDiv.innerHTML = kodDiv.innerHTML;
+};
+
+
+
+
+function perem1() {
+   hDiv.innerHTML = "1)" + qDiv.innerHTML ;
+};
+
+function perem2() {
+   aDiv.innerHTML = "2)" + wDiv.innerHTML ;
+};
+
+function perem3() {
+   sDiv.innerHTML = "3)" + eDiv.innerHTML ;
+};
+
+function perem4() {
+   dDiv.innerHTML = "4)" + rDiv.innerHTML ;
+};
+
+function perem5() {
+   fDiv.innerHTML = "5)" + yDiv.innerHTML ;
+};
+
+
+
+</script>
+
+<style>
+
+.butto{
+    position: absolute;
+    top: 0%;
+    left: 50%;
+}
+
+
+
+
+
+.button{
+    position: absolute;
+    top: 0%;
+    left: 35%;
+}
+
+
+.ysl{
+    position: absolute;
+    top: 5%;
+    left: 5%;
+}
+
+
+.kodiv:hover { border:1px solid red }
+
+
+.like{
+    position: absolute;
+    width: 10%;
+    top: 7%;
+    left: 70%;
+}
+
+
+.help{
+    position: absolute;
+    width: 10%;
+    top: 10%;
+    left: 70%;
+}
+
+.helpa{
+    position: absolute;
+    width: 10%;
+    top: 18%;
+    left: 70%;
+}
+
+.helps{
+    position: absolute;
+    width: 10%;
+    top: 23%;
+    left: 70%;
+}
+
+.helpd{
+    position: absolute;
+    width: 10%;
+    top: 28%;
+    left: 70%;
+}
+
+.helpf{
+    position: absolute;
+    width: 10%;
+    top: 33%;
+    left: 70%;
+}
+
+</style>
+</body>
+</html>
