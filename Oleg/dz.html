@@ -27,30 +27,30 @@ var testUrl = 'http://www.mocky.io/v2/5b9985c63200005d0013fda4';
     x = 0;
     t = 0;
     y = 0;
+    u = 0;
     while(x < data.length){  
-      p.push(data[x].beauty - data[x].admissibility);
+      p.push(data[x].beauty / data[x].admissibility);
       a = p.sort();
       a.reverse();
       x++;
     };
     while(y < 20){
-      if(a[0] == data[t].beauty - data[t].admissibility) {
+      if(a[0] == data[t].beauty / data[t].admissibility) {
         u = Number.parseInt(data[t].admissibility);
         console.log(data[t].name);
         data.splice(t, 1);
         a.shift();
         t = 0;
+        y = u + y;
       } else {
         t++;
       };
     };
-    y = y + u;
   };
 
 load(testUrl, afterAjax);
 
-
-
+            
 </script>
 
 
