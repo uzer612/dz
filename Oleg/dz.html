@@ -33,8 +33,9 @@ var testUrl = 'http://www.mocky.io/v2/5b9985c63200005d0013fda4';
       a.reverse();
       x++;
     };
-    while(y < 21){
+    while(y < 20){
       if(a[0] == data[t].beauty - data[t].admissibility) {
+        u = Number.parseInt(data[t].admissibility);
         console.log(data[t].name);
         data.splice(t, 1);
         a.shift();
@@ -42,11 +43,12 @@ var testUrl = 'http://www.mocky.io/v2/5b9985c63200005d0013fda4';
       } else {
         t++;
       };
-      y++;
     };
+    y = y + u;
   };
 
 load(testUrl, afterAjax);
+
 
 
 </script>
