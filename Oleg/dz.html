@@ -6,7 +6,7 @@
   
 <script>
   
-var testUrl = 'http://www.mocky.io/v2/5b9985c63200005d0013fda4';
+var testUrl = 'http://www.mocky.io/v2/5bc8b48732000082005a00b5';
 
 
 
@@ -28,22 +28,30 @@ var testUrl = 'http://www.mocky.io/v2/5b9985c63200005d0013fda4';
     t = 0;
     y = 0;
     u = 0;
+    k = 10;
     while(x < data.length){  
       p.push(data[x].beauty / data[x].admissibility);
       a = p.sort();
       a.reverse();
       x++;
     };
-    while(y < 2){
-      if(a[0] == data[t].beauty / data[t].admissibility) {
-        u = Number.parseInt(data[t].admissibility);
-        console.log(data[t].name);
-        data.splice(t, 1);
-        a.shift();
-        t = 0;
-        y = y + u / 2;
+    console.log(a);
+    while(y < 10){
+      n = Number.parseInt(data[t].admissibility);
+      if(k >= n){
+        if(a[0] == data[t].beauty / data[t].admissibility) {
+          u = Number.parseInt(data[t].admissibility);
+          console.log(data[t].name);
+          data.splice(t, 1);
+          a.shift();
+          t = 0;
+          y = y + u;
+          k = k - u;
+          } else {
+          t++;
+        };
       } else {
-        t++;
+        y++;
       };
     };
   };
