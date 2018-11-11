@@ -1,0 +1,92 @@
+<html>
+<head>
+  <meta name="http-equiv" content="Content-type: text/html;charset=utf-8">
+    <title></title>
+<body>
+  
+<script>
+  
+
+
+class Shop {
+  constructor(name) {
+    this.name = name;
+
+    this.eatableGoods = [];
+    this.comestibleGoods = [];
+    this.stockGoods = [];
+    this.garbageGoods = [];
+  }
+  add(good) {
+     this.stockGoods.push(good);
+  }
+  sort() {
+    var that = this;
+    this.stockGoods.forEach(function(obj){   
+        if (obj.type === "edible") {
+            that.eatableGoods.push(obj);
+        } else {
+            that.comestibleGoods.push(obj);
+        }
+    })
+    this.stockGoods = [];
+  }
+  check(){
+    var x = 0;
+    var y = 0;
+    var date = new Date();
+    var that = this;
+    while (that.eatableGoods.length > y) {
+        if (that.eatableGoods[y].bestBefore > date) {
+            if (that.eatableGoods[y] !== false) {
+                that.garbageGoods.push(that.eatableGoods[y]);
+                that.eatableGoods[y] = false;
+            };
+        };
+        y++;
+    };
+    while (that.comestibleGoods.length > x) {
+        if (that.comestibleGoods[x].bestBefore > date) {
+            if (that.comestibleGoods[x] !== false) {
+                that.garbageGoods.push(that.comestibleGoods[x]);
+                that.comestibleGoods[x] = false;
+            }
+        };
+        x++;
+    };
+    that.eatableGoods = that.eatableGoods.filter(function(x){ return x !== false });
+    that.comestibleGoods = that.comestibleGoods.filter(Boolean);
+  };
+}
+
+
+class Good {
+  constructor(type, price, name, bestBefore) {
+    this.type = type;
+    this.price = price;
+    this.name = name;
+    this.bestBefore = bestBefore;
+  }
+}
+
+t = new Date(2018, 11, 10);
+i = new Date(2018, 2, 6);
+u = new Date(2030, 0, 1);
+
+
+var good = new Good('edible', '1$', "apple", t);
+var good2 = new Good('edible', '2$', "chocolate", i);
+var good3 = new Good('comestible', '4$', "soap", u);
+
+var product = new Shop('Pyatyorotchka');
+product.add(good);
+product.add(good2);
+product.add(good3);
+product.sort();
+product.check();
+</script>
+
+
+</body>
+
+</html>

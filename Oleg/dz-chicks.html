@@ -8,6 +8,19 @@
   
 var testUrl = 'http://www.mocky.io/v2/5bc8b48732000082005a00b5';
 
+function sortFunction(a, b){
+  var aE = parseInt(a.beauty) / parseInt(a.admissibility);
+  var bE = parseInt(b.beauty) / parseInt(b.admissibility);
+  if(aE > bE){
+     return -1;
+  }
+  if(aE < bE){
+     return 1;
+  }
+  return 0
+};
+
+
 
 
  function load(x, func) {
@@ -22,54 +35,24 @@ var testUrl = 'http://www.mocky.io/v2/5bc8b48732000082005a00b5';
 
 
   function afterAjax(data) {
-    console.log('количество вариантов', data.length);
-    var chicksRating = [];
-    var counter = 0;
-    k = 10;
 
-    function takeChick(chick){
-      console.log('берем: ', chick.name);
-      // убираем ее из даты
-      data.splice(chickCounter, 1);
-      // убираем ее из рейтинга
-      chicksRating.shift();
-    }
+    data.sort(sortFunction);
 
-    var counter = 0;
-    while(counter < data.length){  
-      chicksRating.push(data[counter].beauty / data[counter].admissibility);
-      chicksRating.sort().reverse();
-      counter++;
-    };
-    console.log('рейтинг телочек (список): ', chicksRating);
+    console.log(data, "finaly");
 
+    var result = [];
+    var meetingPrice = 500;
+    var money = 10000;
 
-    var chickCounter = 0;
-    var meetingCounter = 0;
-    x = 0;
-    while(meetingCounter < 10){
-
-      var chick = data[chickCounter];
-      var admis = Number.parseInt(chick.admissibility);
-
-      // если кошелек позволяет пригласить эту чику
-      if(k >= admis){
-        // если это она
-        if(chicksRating[x] == chick.beauty / admis) {
-          takeChick(chick);
-          chickCounter = 0;
-          meetingCounter = meetingCounter + admis;
-          k = k - admis;
-        } else {
-          chickCounter++;
+    data.forEach(function(obj){
+        var admis = parseInt(obj.beauty) / parseInt(obj.admissibility);
+        if(money - meetingPrice*parseInt(obj.admissibility) > 0){
+            result.push(obj.name);
+            money = money - meetingPrice*parseInt(obj.admissibility);
         };
+    });
 
-      } else {
-        meetingCounter++;
-        x++;
-      };
-
-    };
+    console.log('res:', result);
 
   };
 
