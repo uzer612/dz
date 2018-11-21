@@ -72,8 +72,6 @@ class Good {
 }
 
 
-
-
 class Buyer {
   constructor(money, spisok) {
     this.money = money;
@@ -81,12 +79,9 @@ class Buyer {
 
     this.kupleno = [];
   }
-  a = product.eatableGoods.length;
-  b = Number(a);
-  x = 0;
   buy(shop){
     while (x < b) {
-        if(product.eatableGoods[x] == spisok){
+        if(product.eatableGoods[x] == this.spisok){
             product.sold.push(product.eatableGoods[x]);
             product.eatableGoods[x].delete;
         };
@@ -101,7 +96,7 @@ t = new Date(2018, 11, 10);
 i = new Date(2018, 2, 6);
 u = new Date(2030, 0, 1);
 
-var Alesha = new Buyer(1000000, 'apple', 'product');
+var alesha = new Buyer(1000000, 'apple', 'product');
 
 var good = new Good('edible', '1$', "apple", t);
 var good2 = new Good('edible', '2$', "chocolate", i);
@@ -114,6 +109,13 @@ product.add(good2);
 product.add(good3);
 product.sort();
 product.check();
+
+
+a = product.eatableGoods.length;
+b = Number(a);
+x = 0;
+
+
 </script>
 
 
