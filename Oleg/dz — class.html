@@ -84,6 +84,7 @@ class Buyer {
         if(product.eatableGoods[x] == this.spisok){
             product.sold.push(product.eatableGoods[x]);
             product.eatableGoods[x].delete;
+            this.money = this.money - product.eatableGoods[x].price;
         };
         x++;
     };
@@ -98,9 +99,9 @@ u = new Date(2030, 0, 1);
 
 var alesha = new Buyer(1000000, 'apple', 'product');
 
-var good = new Good('edible', '1$', "apple", t);
-var good2 = new Good('edible', '2$', "chocolate", i);
-var good3 = new Good('comestible', '4$', "soap", u);
+var good = new Good('edible', 11, "apple", t);
+var good2 = new Good('edible', 234, "chocolate", i);
+var good3 = new Good('comestible', 234, "soap", u);
 
 var product = new Shop('Pyatyorotchka', 10000);
 
