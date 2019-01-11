@@ -7,9 +7,9 @@
 <script>
   
 
-var string = "7777-45678+321";
+var string = "77-78*21";
 
-var y = 0;
+
 var a = [];
 var t = 0;
 var u = 0
@@ -18,126 +18,55 @@ var q = 0;
 console.log(string.length);
 
 function schet(){
-    while(y < string.length){
-        if(string[y] == "+" || string[y] == "-" || string[y] == "*" || string[y] == "/"){
-            d = y - t;
-            e = d + t;
+    var i = 0;
+    while(i < string.length){
+        if(string[i] == "+" || string[i] == "-" || string[i] == "*" || string[i] == "/"){
+            start = i - t;
+            e = start + t;
             console.log(t, e);
             a.push(string.slice(t, e));
-            t = y + 1;
-            a.push(string[y]);
+            t = i + 1;
+            a.push(string[i]);
         };
-        y++;
+        i++;
     };
-    u =  string.length;
+    u = string.length;
     console.log(t, u);
     a.push(string.slice(t, u));
 };
 
 console.log("конечное число: ");
 
+function checkOperations() {
+    var i = 1;
+    var next = 0;
+    h = Number(a[0]);
 
+    while (i < a.length - 1) {
+        next = Number(a[i + 1]);
 
-function plus1(){
-    if(a[1] == "+"){
-          h = Number(a[0]) + Number(a[2]); 
-   };
+        if(a[i] == "+") {
+            h = h + next;
+        };
+        if(a[i] == "-") {
+            h = h - next;
+        };
+        if(a[i] == "*") {
+            h = h * next;
+        };
+        if(a[i] == "/") {
+            h = h / next;
+        };
+
+        i = i + 2;
+    };
 }
-
-function minus1(){
-    if(a[1] == "-"){
-          h = Number(a[0]) - Number(a[2]); 
-   };
-}
-
-function mnoj1(){
-    if(a[1] == "*"){
-          h = Number(a[0]) * Number(a[2]); 
-   };
-}
-
-function delen1(){
-    if(a[1] == "/"){
-          h = Number(a[0]) / Number(a[2]); 
-   };
-}
-
-
-////////////////////////////////////////////////
-
-
-function plus3(){
-    if(a[3] == "+"){
-          h = h + Number(a[4]); 
-   };
-}
-
-function minus3(){
-    if(a[3] == "-"){
-          h = h - Number(a[4]);
-   };
-}
-
-function mnoj3(){
-    if(a[3] == "*"){
-          h = h * Number(a[4]);
-   };
-}
-
-function delen3(){
-    if(a[3] == "/"){
-          h = h / Number(a[4]);
-   };
-}
-
-
-/////////////////////////////////////////////////
-
-
-function plus5(){
-    if(a[5] == "+"){
-          h = h + Number(a[6]); 
-   };
-}
-
-function minus5(){
-    if(a[5] == "-"){
-          h = h - Number(a[6]); 
-   };
-}
-
-function mnoj5(){
-    if(a[5] == "*"){
-          h = h * Number(a[6]); 
-   };
-}
-
-function delen5(){
-    if(a[5] == "/"){
-          h = h / Number(a[6]); 
-   };
-}
-
 
 
 
 schet();
 
- plus1();
- minus1();
- mnoj1();     
- delen1();
-
-  plus3();
-  minus3();
-  mnoj3();     
-  delen3();
-
-  plus5();
-  minus5();
-  mnoj5();     
-  delen5();
-
+checkOperations();
 
 console.log(a);
 console.log(h);

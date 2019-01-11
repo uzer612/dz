@@ -1,0 +1,129 @@
+<html>
+<head>
+  <meta name="http-equiv" content="Content-type: text/html;charset=utf-8">
+    <title></title>
+<body>
+  
+
+
+<div>
+  7
+  <input data-num="7" />
+  <span class="stage" id="stage7">-</span>
+</div>
+<div>
+  6
+  <input data-num="6" />
+  <span class="stage" id="stage6">-</span>
+</div>
+<div>
+  5
+  <input data-num="5" />
+  <span class="stage" id="stage5">-</span>
+</div>
+<div>
+  4
+  <input data-num="4" />
+  <span class="stage" id="stage4">-</span>
+</div>
+<div>
+  3
+  <input data-num="3" />
+  <span class="stage" id="stage3">-</span>
+</div>
+<div>
+  2
+  <input data-num="2" />
+  <span class="stage" id="stage2">-</span>
+</div>
+<div>
+  1
+  <input data-num="1" />
+  <span class="stage" id="stage1">[]</span>
+</div>
+
+
+<script>
+var liftPosition = 1;
+
+function show(stageNumber, isFull) {
+  var placeToShow = document.querySelector('#stage' + stageNumber);
+  
+  if (placeToShow){
+    cleanLifts();
+    
+    placeToShow.innerHTML= "[]";
+    if (isFull) {
+        placeToShow.innerHTML= "[*]";
+    }
+  }
+}
+
+function cleanLifts(){
+  var all = document.querySelectorAll('.stage');
+  for (el of all) {
+    el.innerHTML = '';
+  }
+}
+
+var allInputs = document.querySelectorAll('input');
+for (inputEl of allInputs) {
+  inputEl.addEventListener('blur', onChange);
+}
+
+function onChange(event){
+  var changedInput = event.target;
+  console.log('to:', changedInput.value, 'from:', changedInput.dataset.num);
+  coming(changedInput.dataset.num);
+  movement(changedInput.value);
+  changedInput.value = '';
+}
+
+
+
+function coming(from) {
+    from = Number.parseInt(from);
+    if(liftPosition > from){
+         while (liftPosition > from - 1){
+            show(liftPosition, false);
+            console.log(liftPosition, "туда вниз", from);
+            liftPosition--;
+         }
+    } else {
+        while (liftPosition < from + 1){
+            show(liftPosition, false);
+            console.log(liftPosition, "туда вверх");
+            liftPosition++;
+        }
+    }
+};
+
+function movement(to){
+   to = Number.parseInt(to);
+   if(liftPosition > to){
+        while(liftPosition > to - 1){
+            show(liftPosition, true);
+            console.log(liftPosition, "оттуда вниз" , to);
+            liftPosition--;
+        }
+    } else {
+        while(liftPosition < to + 1){
+            show(liftPosition, true);
+            console.log(liftPosition, "оттуда вверх", to);
+            liftPosition++;
+        }
+    }
+     show(to, false);
+}
+
+
+
+
+
+
+
+</script>
+
+</body>
+
+</html>

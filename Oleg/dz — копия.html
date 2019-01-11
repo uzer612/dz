@@ -1,0 +1,67 @@
+<html>
+<head>
+  <meta name="http-equiv" content="Content-type: text/html;charset=utf-8">
+    <title>dz</title>
+<body>
+  
+<script>
+  
+var testUrl = 'http://www.mocky.io/v2/5bc8b48732000082005a00b5';
+
+
+
+ function load(x, func) {
+      fetch(x)
+        .then(function(response) {
+          return response.json();
+         })
+        .then(function(data) {
+          func(data);
+        });
+    };
+
+
+  function afterAjax(data) {
+    console.log(data.length);
+    var p = [];
+    x = 0;
+    t = 0;
+    y = 0;
+    u = 0;
+    k = 10;
+    while(x < data.length){  
+      p.push(data[x].beauty / data[x].admissibility);
+      a = p.sort();
+      a.reverse();
+      x++;
+    };
+    console.log(a);
+    while(y < 10){
+      n = Number.parseInt(data[t].admissibility);
+      if(k >= n){
+        if(a[0] == data[t].beauty / data[t].admissibility) {
+          u = Number.parseInt(data[t].admissibility);
+          console.log(data[t].name);
+          data.splice(t, 1);
+          a.shift();
+          t = 0;
+          y = y + u;
+          k = k - u;
+          } else {
+          t++;
+        };
+      } else {
+        y++;
+      };
+    };
+  };
+
+load(testUrl, afterAjax);
+
+            
+</script>
+
+
+</body>
+
+</html>
