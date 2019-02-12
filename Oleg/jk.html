@@ -14,7 +14,7 @@
 <div>
   6
   <input data-num="6" />
-  <span class="stage" id="stage6">-</span>
+  <span class="stage" id="stage6">[*]</span>
 </div>
 <div>
   5
@@ -39,12 +39,12 @@
 <div>
   1
   <input data-num="1" />
-  <span class="stage" id="stage1">[]</span>
+  <span class="stage" id="stage1">-</span>
 </div>
 
 
 <script>
-var liftPosition = 1;
+var liftPosition = 6;
 
 function show(stageNumber, isFull) {
   var placeToShow = document.querySelector('#stage' + stageNumber);
@@ -74,8 +74,6 @@ for (inputEl of allInputs) {
 function onChange(event){
   var changedInput = event.target;
   console.log('to:', changedInput.value, 'from:', changedInput.dataset.num);
-  coming(changedInput.dataset.num);
-  movement(changedInput.value);
   changedInput.value = '';
 }
 
@@ -115,6 +113,31 @@ function movement(to){
     }
      show(to, false);
 }
+
+
+
+
+
+
+
+
+y = 7;
+
+
+function block () {
+    console.log(y);
+    if(y == 1) {
+        clearInterval(j);
+    };
+    y--;
+};
+
+
+j = setInterval(block, 1000)
+
+
+
+////////////////////////////////////////
 
 
 
