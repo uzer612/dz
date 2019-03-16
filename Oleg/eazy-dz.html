@@ -32,3 +32,122 @@ j = setInterval(block, 1000)
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+function coming(from) {
+    from = Number.parseInt(from);
+    if(liftPosition > from){
+         while (liftPosition > from - 1){
+            show(liftPosition, false);
+            console.log(liftPosition, "туда вниз", from);
+            liftPosition--;
+         }
+    } else {
+        while (liftPosition < from + 1){
+            show(liftPosition, false);
+            console.log(liftPosition, "туда вверх");
+            liftPosition++;
+        }
+    }
+};
+
+
+
+function movement(to){
+   to = Number.parseInt(to);
+   if(liftPosition > to){
+        while(liftPosition > to - 1){
+            show(liftPosition, true);
+            console.log(liftPosition, "оттуда вниз" , to);
+            liftPosition--;
+        }
+    } else {
+        while(liftPosition < to + 1){
+            show(liftPosition, true);
+            console.log(liftPosition, "оттуда вверх", to);
+            liftPosition++;
+        }
+    }
+     show(to, false);
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+function coming(from) {
+    from = Number.parseInt(from);
+    if(liftPosition > from){
+         if (liftPosition > from - 1){
+            show(liftPosition, false);
+            console.log(liftPosition, "туда вниз", from);
+            liftPosition--;
+         }
+    } else {
+        if (liftPosition < from + 1){
+            show(liftPosition, false);
+            console.log(liftPosition, "туда вверх");
+            liftPosition++;
+        }
+    }
+    clearInterval(j);
+};
+
+
+
+function movement(to){
+   to = Number.parseInt(to);
+   if(liftPosition > to){
+        if(liftPosition > to - 1){
+            show(liftPosition, true);
+            console.log(liftPosition, "оттуда вниз" , to);
+            liftPosition--;
+        }
+    } else {
+        if(liftPosition < to + 1){
+            show(liftPosition, true);
+            console.log(liftPosition, "оттуда вверх", to);
+            liftPosition++;
+        }
+    }
+     show(to, false);
+     clearInterval(j);
+};
+
+
+
+
+
+
+
+
+
+
+
+  j = setInterval(coming, 1000, changedInput.dataset.num);
+  j = setInterval(movement, 1000, changedInput.value);
+
+
+
+  clearInterval(j);
+
+
+
+

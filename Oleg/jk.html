@@ -3,7 +3,7 @@
   <meta name="http-equiv" content="Content-type: text/html;charset=utf-8">
     <title></title>
 <body>
-  
+
 
 
 <div>
@@ -14,7 +14,7 @@
 <div>
   6
   <input data-num="6" />
-  <span class="stage" id="stage6">[*]</span>
+  <span class="stage" id="stage6">-</span>
 </div>
 <div>
   5
@@ -39,13 +39,12 @@
 <div>
   1
   <input data-num="1" />
-  <span class="stage" id="stage1">-</span>
+  <span class="stage" id="stage1">[]</span>
 </div>
 
 
 <script>
-var liftPosition = 6;
-
+var liftPosition = 1;
 function show(stageNumber, isFull) {
   var placeToShow = document.querySelector('#stage' + stageNumber);
   
@@ -58,88 +57,69 @@ function show(stageNumber, isFull) {
     }
   }
 }
-
 function cleanLifts(){
   var all = document.querySelectorAll('.stage');
   for (el of all) {
     el.innerHTML = '';
   }
 }
-
 var allInputs = document.querySelectorAll('input');
 for (inputEl of allInputs) {
   inputEl.addEventListener('blur', onChange);
 }
-
 function onChange(event){
   var changedInput = event.target;
   console.log('to:', changedInput.value, 'from:', changedInput.dataset.num);
+  j = setInterval(coming, 1000, changedInput.dataset.num);
+  t = setInterval(movement, 1000, changedInput.value);
   changedInput.value = '';
 }
 
 
 
+
 function coming(from) {
     from = Number.parseInt(from);
+    if(liftPosition == from){
+    clearInterval(j);
+    };
     if(liftPosition > from){
-         while (liftPosition > from - 1){
+         if (liftPosition > from - 1){
             show(liftPosition, false);
             console.log(liftPosition, "туда вниз", from);
             liftPosition--;
-         }
+         };
     } else {
-        while (liftPosition < from + 1){
+        if (liftPosition < from + 1){
             show(liftPosition, false);
-            console.log(liftPosition, "туда вверх");
+            console.log(liftPosition, "туда вверх", from);
             liftPosition++;
-        }
-    }
+        };
+    };
 };
 
+
+
 function movement(to){
-   to = Number.parseInt(to);
+     to = Number.parseInt(to);
+  if(liftPosition == to){
+  clearInterval(t);
+  };
    if(liftPosition > to){
-        while(liftPosition > to - 1){
+        if(liftPosition > to - 1){
             show(liftPosition, true);
             console.log(liftPosition, "оттуда вниз" , to);
             liftPosition--;
-        }
+        };
     } else {
-        while(liftPosition < to + 1){
+        if(liftPosition < to + 1){
             show(liftPosition, true);
             console.log(liftPosition, "оттуда вверх", to);
             liftPosition++;
-        }
-    }
-     show(to, false);
-}
-
-
-
-
-
-
-
-
-y = 7;
-
-
-function block () {
-    console.log(y);
-    if(y == 1) {
-        clearInterval(j);
+        };
     };
-    y--;
+     show(to, false);
 };
-
-
-j = setInterval(block, 1000)
-
-
-
-////////////////////////////////////////
-
-
 
 
 
