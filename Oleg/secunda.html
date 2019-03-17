@@ -6,7 +6,7 @@
   
 
 <button onclick="stop()" class="one"  >stop</button>
-<button onclick="plus()" class="two"  >plus</button>
+<button onclick="plus()" class="two" id="pluss" >plus</button>
 <button onclick="sbros()" class="three"  >sbros</button>
 
 
@@ -29,15 +29,14 @@ p.innerHTML = x;
 
 
 
-
-
 var x = 0;
-
 x = document.getElementById('text');
+
 
 function start() {
     x = x + 0.1;
     console.log(x);
+    document.getElementById('pluss').style.display = 'none';
 };
 
 
@@ -57,9 +56,13 @@ j = setInterval(start, 100)
 
 function stop() {
    clearInterval(j);
+    document.getElementById('pluss').style.display = 'block';
 };
 
 
+
+stop();
+sbros();
 
 
 </script>
