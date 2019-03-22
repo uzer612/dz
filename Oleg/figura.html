@@ -1,0 +1,89 @@
+<html>
+<head>
+  <meta name="http-equiv" content="Content-type: text/html;charset=utf-8">
+    <title></title>
+<body>
+  
+<script>
+  
+
+arr = [];
+
+
+
+
+class Figure {
+  constructor(name, radius, m, l) {
+    this.name = name;
+    this.radius  = radius;
+    this.m = m;
+    this.l = l;
+  };
+  area(){
+  };
+  periphery(){
+  };
+}
+
+
+class Rectangle extends Figure {
+  area(){
+    var areaRect;
+    var peripheryRect;
+    areaRect = this.radius * this.m;
+    peripheryRect = 2 * (this.radius + this.m);
+    var obj = {name: this.name, area: areaRect, periphery: peripheryRect};
+    arr.push(obj);
+  };
+}
+
+
+class Circle extends Figure {
+  area(){
+    var areaCircle;
+    var peripheryCircle;
+    areaCircle = 3.14 * this.radius * this.radius;
+    peripheryCircle = 2 * this.radius * 3.14;
+    var obj = {name: this.name, area: areaCircle, periphery: peripheryCircle};
+    arr.push(obj);
+  };
+}
+
+
+class Triangle extends Figure {
+  area(){
+    var g;
+    var p;
+    var peripheryTria;
+    var peripheryTria;
+    peripheryTria = this.radius + this.m + this.l;
+    p = peripheryTria / 2;
+    g = Math.sqrt(p*(p-this.radius)*(p-this.m)*(p-this.l));
+    peripheryTria = this.radius + this.m + this.l;
+    var obj = {name: this.name, area: g, periphery: peripheryTria};
+    arr.push(obj);
+  };
+}
+
+
+
+gh = new Rectangle("AB", 5, 6);
+gh.area();
+
+
+qw = new Circle("mya", 4);
+qw.area();
+
+
+rt = new Triangle("tri", 4, 5, 6);
+rt.area();
+
+
+
+
+</script>
+
+
+</body>
+
+</html>
