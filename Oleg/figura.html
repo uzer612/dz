@@ -11,13 +11,10 @@ arr = [];
 
 
 
-
 class Figure {
-  constructor(name, radius, m, l) {
+  constructor(name, type) {
     this.name = name;
-    this.radius  = radius;
-    this.m = m;
-    this.l = l;
+    this.type = type;
   };
   area(){
   };
@@ -27,59 +24,96 @@ class Figure {
 
 
 class Rectangle extends Figure {
+  constructor(name, type, radius, m){
+    super(name, type); 
+    this.radius = radius;
+    this.m = m;
+    this.area();
+    this.periphery();   
+  }
   area(){
-    var areaRect;
-    var peripheryRect;
-    areaRect = this.radius * this.m;
-    peripheryRect = 2 * (this.radius + this.m);
-    var obj = {name: this.name, area: areaRect, periphery: peripheryRect};
-    arr.push(obj);
+   var areaRect;
+   areaRect = (this.radius + this.m)/2;
+   console.log(this.name);
+   console.log("Площадь", areaRect);
   };
+  periphery(){
+   var peripheryRect;
+   peripheryRect = 2 * (this.radius + this.m);
+   console.log("Периметр" , peripheryRect);
+   console.log("///////////////////////////////");
+  }
 }
+
+
+
 
 
 class Circle extends Figure {
+   constructor(name, type, radius){
+    super(name, type);
+    this.radius = radius;
+    this.area();
+    this.periphery();
+  }
   area(){
     var areaCircle;
-    var peripheryCircle;
     areaCircle = 3.14 * this.radius * this.radius;
-    peripheryCircle = 2 * this.radius * 3.14;
-    var obj = {name: this.name, area: areaCircle, periphery: peripheryCircle};
-    arr.push(obj);
+    console.log(this.name);
+    console.log("Площадь", areaCircle);
   };
+  periphery(){
+    var peripheryCircle;
+    peripheryCircle = 2 * this.radius * 3.14;
+    console.log("Периметр" , peripheryCircle);
+     console.log("///////////////////////////////");
+  }
 }
 
 
+
 class Triangle extends Figure {
+   constructor(name, type, radius, m, l){
+    super(name, type);
+    this.radius = radius;
+    this.m = m;
+    this.l = l;
+    this.area();
+    this.periphery();
+  }
   area(){
     var g;
     var p;
     var peripheryTria;
-    var peripheryTria;
     peripheryTria = this.radius + this.m + this.l;
     p = peripheryTria / 2;
-    g = Math.sqrt(p*(p-this.radius)*(p-this.m)*(p-this.l));
-    peripheryTria = this.radius + this.m + this.l;
-    var obj = {name: this.name, area: g, periphery: peripheryTria};
-    arr.push(obj);
+    g = Math.sqrt(p*(p-this.radius)*(p-this.m)*(p-this.l))
+    console.log(this.name);
+    console.log("Площадь", g);
   };
+  periphery(){
+    var peripheryTria;
+    peripheryTria = this.radius + this.m + this.l;
+    console.log("Периметр" , peripheryTria);
+     console.log("///////////////////////////////");
+  }
 }
 
 
 
-gh = new Rectangle("AB", 5, 6);
-gh.area();
-
-
-qw = new Circle("mya", 4);
-qw.area();
-
-
-rt = new Triangle("tri", 4, 5, 6);
-rt.area();
 
 
 
+gh = new Rectangle("AB","Прямоугольник", 5, 6);
+arr.push(gh);
+qw = new Circle("mya", "Круг", 4);
+arr.push(qw);
+rt = new Triangle("tri", "треугольник", 4, 5, 6);
+arr.push(rt);
+
+
+
+console.log(arr);
 
 </script>
 
@@ -87,3 +121,6 @@ rt.area();
 </body>
 
 </html>
+
+
+
