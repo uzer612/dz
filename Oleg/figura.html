@@ -24,22 +24,22 @@ class Figure {
 
 
 class Rectangle extends Figure {
-  constructor(name, type, radius, m){
+  constructor(name, type, storonaOne, storonaTwo){
     super(name, type); 
-    this.radius = radius;
-    this.m = m;
+    this.storonaOne = storonaOne;
+    this.storonaTwo = storonaTwo;
     this.area();
     this.periphery();   
   }
   area(){
    var areaRect;
-   areaRect = (this.radius + this.m)/2;
+   areaRect = (this.storonaOne * this.storonaTwo);
    console.log(this.name);
    console.log("Площадь", areaRect);
   };
   periphery(){
    var peripheryRect;
-   peripheryRect = 2 * (this.radius + this.m);
+   peripheryRect = 2 * (this.storonaOne + this.storonaTwo);
    console.log("Периметр" , peripheryRect);
    console.log("///////////////////////////////");
   }
@@ -73,11 +73,11 @@ class Circle extends Figure {
 
 
 class Triangle extends Figure {
-   constructor(name, type, radius, m, l){
+   constructor(name, type, storonaThree, storonaOne, storonaTwo){
     super(name, type);
-    this.radius = radius;
-    this.m = m;
-    this.l = l;
+    this.storonaThree = storonaThree;
+    this.storonaOne = storonaOne;
+    this.storonaTwo = storonaTwo;
     this.area();
     this.periphery();
   }
@@ -85,22 +85,19 @@ class Triangle extends Figure {
     var g;
     var p;
     var peripheryTria;
-    peripheryTria = this.radius + this.m + this.l;
+    peripheryTria = this.storonaThree + this.storonaOne + this.storonaTwo;
     p = peripheryTria / 2;
-    g = Math.sqrt(p*(p-this.radius)*(p-this.m)*(p-this.l))
+    g = Math.sqrt(p*(p-this.storonaThree)*(p-this.storonaOne)*(p-this.storonaTwo))
     console.log(this.name);
     console.log("Площадь", g);
   };
   periphery(){
     var peripheryTria;
-    peripheryTria = this.radius + this.m + this.l;
+    peripheryTria = this.storonaThree + this.storonaOne + this.storonaTwo;
     console.log("Периметр" , peripheryTria);
      console.log("///////////////////////////////");
   }
 }
-
-
-
 
 
 
