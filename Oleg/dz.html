@@ -1,67 +1,143 @@
 <html>
 <head>
-  <meta name="http-equiv" content="Content-type: text/html;charset=utf-8">
-    <title>dz</title>
+    <meta name="http-equiv" content="Content-type: text/html;charset=utf-8">
+    <title>work</title>
+</head>
 <body>
-  
+
+
+<button onclick="load(testUrl1, afterAjax)">Москва</button>
+<button onclick="load(testUrl2, afterAjax)">Санкт-Петербург</button>
+<button onclick="load(testUrl3, afterAjax)">Таллин</button>
+
+
+
+
+<div id="city"></div>
+<div id="koord"></div>
+<div id="koor"></div>
+<div id="temp"></div>
+<div id="skor"></div>
+
+
 <script>
-  
-var testUrl = 'http://www.mocky.io/v2/5bc8b48732000082005a00b5';
+
+var arr = [];
+var H = [];
+
+
+var testUrl1 = 'http://openweathermap.org/data/2.5/weather?q=Moscow&appid=b6907d289e10d714a6e88b30761fae22';
+var testUrl2 = 'http://openweathermap.org/data/2.5/weather?q=Saint%20Petersburg&appid=b6907d289e10d714a6e88b30761fae22';
+var testUrl3 = 'http://openweathermap.org/data/2.5/weather?q=Tallinn&appid=b6907d289e10d714a6e88b30761fae22';
+var cityDiv = document.getElementById('city');
+var koordDiv = document.getElementById('koord');
+var koorDiv = document.getElementById('koor');
+var tempDiv = document.getElementById('temp');
+var skorDiv = document.getElementById('skor');
+function load(x, func) {
+  fetch(x)
+    .then(function(response) {
+      return response.json();
+     })
+    .then(function(data) {
+      func(data);
+    });
+};
+function afterAjax(data) {
+   console.log("Город:" , data.name);
+   cityDiv.innerHTML = "Город: " + data.name;
+   console.log("Долгота:" , data.coord.lon);
+   koordDiv.innerHTML = "Долгота: " + data.coord.lon;
+   console.log("Широта:" , data.coord.lat);
+   koorDiv.innerHTML =  "Широта: " + data.coord.lat;
+   console.log("Температура:" , data.main.temp);
+   tempDiv.innerHTML = "Температура: " + data.main.temp;
+   console.log("Скорость ветра:" , data.wind.speed);
+   skorDiv.innerHTML = "Скорость ветра: " + data.wind.speed + " М/с";
+   temperatura = data.main.temp;
+};
+
+function afterAjaxHistory(data) {
+  console.log("Город:" , data.name);
+  console.log("Долгота:" , data.coord.lon)
+  console.log("Широта:" , data.coord.lat);
+  console.log("Температура:" , data.main.temp);
+  console.log("Скорость ветра:" , data.wind.speed);
+  arr.push(data.name);
+  arr.push(data.coord.lon);
+  arr.push(data.coord.lat);
+  arr.push(data.main.temp);
+  arr.push(data.wind.speed);
+  console.log(arr);
+};
 
 
 
- function load(x, func) {
-      fetch(x)
-        .then(function(response) {
-          return response.json();
-         })
-        .then(function(data) {
-          func(data);
-        });
-    };
 
 
-  function afterAjax(data) {
-    console.log(data.length);
-    var p = [];
-    x = 0;
-    t = 0;
-    y = 0;
-    u = 0;
-    k = 10;
-    while(x < data.length){  
-      p.push(data[x].beauty / data[x].admissibility);
-      a = p.sort();
-      a.reverse();
-      x++;
-    };
-    console.log(a);
-    while(y < 10){
-      n = Number.parseInt(data[t].admissibility);
-      if(k >= n){
-        if(a[0] == data[t].beauty / data[t].admissibility) {
-          u = Number.parseInt(data[t].admissibility);
-          console.log(data[t].name);
-          data.splice(t, 1);
-          a.shift();
-          t = 0;
-          y = y + u;
-          k = k - u;
-          } else {
-          t++;
-        };
-      } else {
-        y++;
-      };
-    };
+class Weather {
+  constructor(city) {
+    this.city = city;
   };
 
-load(testUrl, afterAjax);
+  getWeather(city){
+    if(city == "Moscow" || city == "SaintPetersburg"){
+      if(city == "Moscow"){
+        load(testUrl1, afterAjax)
+      } else {
+          load(testUrl2, afterAjax)
+        };
+    } else {
+      load(testUrl3, afterAjax)
+    };
+  };
+};
 
-            
+
+class Clothes extends Weather {
+  getClothes(city){
+     if(city == "Moscow" || city == "SaintPetersburg"){
+      if(city == "Moscow"){
+        load(testUrl1, afterAjax)
+      } else {
+          load(testUrl2, afterAjax)
+        };
+    } else {
+      load(testUrl3, afterAjax)
+    };
+    if( temperatura < 0 || temperatura < 20){
+      if( temperatura < 0){
+        console.log("Там очень холодно, можно и спользовать всю тёплую одежду");
+      }
+    } else {
+      console.log("Очень жарко, можно в футболке");
+    };
+  };
+};
+
+
+
+
+class History extends Weather {
+  getHistory(city){
+     if(city == "Moscow" || city == "SaintPetersburg"){
+      if(city == "Moscow"){
+        load(testUrl1, afterAjaxHistory)
+      } else {
+          load(testUrl2, afterAjaxHistory)
+        };
+    } else {
+      load(testUrl3, afterAjaxHistory)
+    };
+  };
+};
+
+
+
+
+
+
+
 </script>
-
-
 </body>
-
 </html>
